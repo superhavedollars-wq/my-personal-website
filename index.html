@@ -1,147 +1,117 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>我的个人网站</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      background: #f5f7fb;
-      color: #111;
-    }
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>华思维的个人网站 | AI 协作素材清单</title>
+    <meta name="description" content="欢迎来到华思维的个人网站。这里整理自我素材清单、人机分工图、AI 完整追问记录、AI 协作契约与人机协作避坑准则。">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="华思维的个人网站">
+    <meta property="og:description" content="一个围绕真实自我梳理与 AI 协作边界建立的个人网站。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/human-ai-map.png">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "华思维的个人网站",
+        "description": "自我素材清单、人机分工图、AI 完整追问记录、AI 协作契约与人机协作避坑准则。",
+        "inLanguage": "zh-CN"
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-    }
+    <header class="site-header">
+      <nav class="site-nav" aria-label="主导航">
+        <a class="brand" href="index.html" aria-label="返回首页">
+          <span class="brand-mark" aria-hidden="true">思</span>
+          <span>华思维</span>
+        </a>
+        <div class="nav-links">
+          <a href="#cards">内容卡片</a>
+          <a href="pages/ai-contract.html">协作契约</a>
+          <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅色主题" title="切换深浅色主题">
+            <span data-theme-icon aria-hidden="true">◐</span>
+          </button>
+        </div>
+      </nav>
+    </header>
 
-    .container {
-      max-width: 900px;
-      width: 100%;
-    }
+    <main id="main">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">个人 AI 协作档案</p>
+          <h1>欢迎来到我的个人网站</h1>
+          <p class="lead">
+            这里整理了我的自我素材、人机分工边界、AI 追问记录、协作契约与避坑准则。所有内容都围绕一个核心：让 AI 做辅助，让真实判断留在自己手里。
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#cards">查看卡片</a>
+            <a class="secondary-link" href="pages/human-ai-map.html">查看分工图</a>
+          </div>
+        </div>
+      </section>
 
-    .intro {
-      background: white;
-      padding: 48px;
-      border-radius: 28px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-      text-align: center;
-      margin-bottom: 28px;
-    }
+      <section class="content-toolbar" aria-label="内容筛选">
+        <label class="search-field">
+          <span>查找内容</span>
+          <input type="search" data-card-search placeholder="输入关键词，例如：契约、追问、分工" autocomplete="off">
+        </label>
+        <div class="filter-group" role="group" aria-label="按类型筛选">
+          <button class="filter-button is-active" type="button" data-filter="all">全部</button>
+          <button class="filter-button" type="button" data-filter="self">自我梳理</button>
+          <button class="filter-button" type="button" data-filter="ai">AI 协作</button>
+          <button class="filter-button" type="button" data-filter="rules">边界准则</button>
+        </div>
+      </section>
 
-    h1 {
-      font-size: 42px;
-      margin: 0 0 18px;
-    }
-
-    .intro p {
-      font-size: 18px;
-      color: #555;
-      line-height: 1.8;
-      margin: 0;
-    }
-
-    .explore {
-      margin-top: 24px;
-      font-size: 16px;
-      color: #777;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      display: block;
-      background: white;
-      padding: 26px;
-      border-radius: 22px;
-      text-decoration: none;
-      color: #111;
-      box-shadow: 0 12px 36px rgba(0,0,0,0.06);
-      transition: 0.25s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.12);
-    }
-
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 22px;
-    }
-
-    .card p {
-      margin: 0;
-      color: #666;
-      line-height: 1.6;
-      font-size: 15px;
-    }
-
-    .arrow {
-      margin-top: 18px;
-      color: #0070f3;
-      font-weight: bold;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="hero">
-    <div class="container">
-
-      <div class="intro">
-        <h1>欢迎来到我的个人网站</h1>
-        <p>
-          Hi, I'm Zhang Ning.<br>
-          这里记录我的成长、自我探索、AI 协作、学习、思考与未来。
-        </p>
-        <div class="explore">↓ Explore</div>
-      </div>
-
-      <div class="grid">
-
-        <a class="card" href="about.html">
-          <h2>📖 自我素材清单</h2>
-          <p>认识我是谁、我拥有什么、我的经历资产、能力优势与个人限制。</p>
-          <div class="arrow">进入 →</div>
+      <section class="card-grid" id="cards" aria-label="个人网站内容卡片">
+        <a class="content-card" href="pages/self-materials.html" data-card data-category="self" data-keywords="自我素材 清单 我是谁 目标 卡点 认知盲区">
+          <span class="card-index">01</span>
+          <h2>自我素材清单</h2>
+          <p>关于我是谁、拥有什么、想要什么，以及现阶段的情绪卡点与认知盲区。</p>
+          <span class="card-link">进入详情</span>
         </a>
 
-        <a class="card" href="mindmap.html">
-          <h2>🧠 人机分工图</h2>
-          <p>梳理我和 AI 之间的分工边界，明确哪些事由我判断，哪些事由 AI 辅助。</p>
-          <div class="arrow">进入 →</div>
+        <a class="content-card" href="pages/human-ai-map.html" data-card data-category="rules ai" data-keywords="人机分工 四象限 判断权 AI辅助 人审核">
+          <span class="card-index">02</span>
+          <h2>人机分工图</h2>
+          <p>用四象限模型划清哪些事由人决定、哪些事可由 AI 代劳或辅助。</p>
+          <span class="card-link">进入详情</span>
         </a>
 
-        <a class="card" href="interview.html">
-          <h2>💬 AI 完整追问记录</h2>
-          <p>记录 AI 如何通过连续追问，帮助我梳理经历、优势、目标与心理卡点。</p>
-          <div class="arrow">进入 →</div>
+        <a class="content-card" href="pages/ai-questions.html" data-card data-category="ai self" data-keywords="AI完整追问记录 提问 回答 追问 自我梳理">
+          <span class="card-index">03</span>
+          <h2>AI 完整追问记录</h2>
+          <p>从基础自我梳理到目标卡点梳理，保留完整的追问与回答脉络。</p>
+          <span class="card-link">进入详情</span>
         </a>
 
-        <a class="card" href="contract.html">
-          <h2>📜 个人 AI 协作契约</h2>
-          <p>我与 AI 协作时长期遵守的原则、边界与五条核心约定。</p>
-          <div class="arrow">进入 →</div>
+        <a class="content-card" href="pages/ai-contract.html" data-card data-category="ai rules" data-keywords="AI协作契约 永久生效 五条约定 边界 责任">
+          <span class="card-index">04</span>
+          <h2>AI 协作契约</h2>
+          <p>明确 AI 可以做什么、不能替我决定什么，以及我必须如何检查输出。</p>
+          <span class="card-link">进入详情</span>
         </a>
 
-        <a class="card" href="guide.html">
-          <h2>⚠️ 人机协作避坑准则</h2>
-          <p>规避理解错觉、完成错觉和能力错觉，避免过度依赖 AI。</p>
-          <div class="arrow">进入 →</div>
+        <a class="content-card" href="pages/collaboration-pitfalls.html" data-card data-category="rules ai" data-keywords="人机协作避坑准则 理解错觉 完成错觉 能力错觉 高水平使用">
+          <span class="card-index">05</span>
+          <h2>人机协作避坑准则</h2>
+          <p>围绕理解错觉、完成错觉、能力错觉，建立日常自查与使用边界。</p>
+          <span class="card-link">进入详情</span>
         </a>
+      </section>
 
-      </div>
+      <p class="empty-state" data-empty-state hidden>没有找到匹配的卡片，换个关键词试试。</p>
+    </main>
 
-    </div>
-  </div>
-</body>
+    <footer class="site-footer">
+      <p>© 2026 华思维。内容整理自个人 AI 协作素材清单。</p>
+    </footer>
+  </body>
 </html>
