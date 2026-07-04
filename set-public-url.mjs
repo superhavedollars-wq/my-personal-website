@@ -4,7 +4,7 @@ import path from "node:path";
 const publicUrl = process.argv[2];
 
 if (!publicUrl || !/^https?:\/\//.test(publicUrl)) {
-  console.error("Usage: node tools/set-public-url.mjs https://example.com/");
+  console.error("Usage: node set-public-url.mjs https://example.com/");
   process.exit(1);
 }
 
@@ -12,11 +12,10 @@ const normalizedUrl = publicUrl.endsWith("/") ? publicUrl : `${publicUrl}/`;
 const root = process.cwd();
 const pages = [
   { file: "index.html", url: normalizedUrl },
-  { file: "pages/self-materials.html", url: `${normalizedUrl}pages/self-materials.html` },
-  { file: "pages/human-ai-map.html", url: `${normalizedUrl}pages/human-ai-map.html` },
-  { file: "pages/ai-questions.html", url: `${normalizedUrl}pages/ai-questions.html` },
-  { file: "pages/ai-contract.html", url: `${normalizedUrl}pages/ai-contract.html` },
-  { file: "pages/collaboration-pitfalls.html", url: `${normalizedUrl}pages/collaboration-pitfalls.html` },
+  { file: "self-materials.html", url: `${normalizedUrl}self-materials.html` },
+  { file: "human-ai-map.html", url: `${normalizedUrl}human-ai-map.html` },
+  { file: "ai-questions.html", url: `${normalizedUrl}ai-questions.html` },
+  { file: "ai-contract.html", url: `${normalizedUrl}ai-contract.html` },
 ];
 
 for (const page of pages) {

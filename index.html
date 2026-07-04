@@ -3,117 +3,136 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>华思维的个人网站 | AI 协作素材清单</title>
-    <meta name="description" content="欢迎来到华思维的个人网站。这里整理自我素材清单、人机分工图、AI 完整追问记录、AI 协作契约与人机协作避坑准则。">
+    <title>华思维的个人网站 | 数字经济与跨境电商</title>
+    <meta name="description" content="华思维的个人网站。21 届数字经济学生，目前从事跨境电商相关工作，展示个人简介、技能与联系方式。">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://superhavedollars-wq.github.io/my-personal-website/">
     <meta property="og:url" content="https://superhavedollars-wq.github.io/my-personal-website/">
     <meta property="og:title" content="华思维的个人网站">
-    <meta property="og:description" content="一个围绕真实自我梳理与 AI 协作边界建立的个人网站。">
+    <meta property="og:description" content="21 届数字经济学生，正在跨境电商方向积累实践经验。">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="human-ai-map.png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "华思维的个人网站",
-        "description": "自我素材清单、人机分工图、AI 完整追问记录、AI 协作契约与人机协作避坑准则。",
-        "inLanguage": "zh-CN"
+        "@type": "Person",
+        "name": "华思维",
+        "description": "21 届数字经济学生，目前从事跨境电商方面的工作。",
+        "telephone": "19550137553"
       }
     </script>
   </head>
   <body>
+    <canvas class="starfield" data-starfield aria-hidden="true"></canvas>
     <a class="skip-link" href="#main">跳到主要内容</a>
 
     <header class="site-header">
       <nav class="site-nav" aria-label="主导航">
         <a class="brand" href="index.html" aria-label="返回首页">
-          <span class="brand-mark" aria-hidden="true">思</span>
+          <span class="brand-mark" aria-hidden="true">✦</span>
           <span>华思维</span>
         </a>
         <div class="nav-links">
-          <a href="#cards">内容卡片</a>
-          <a href="ai-contract.html">协作契约</a>
-          <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅色主题" title="切换深浅色主题">
-            <span data-theme-icon aria-hidden="true">◐</span>
-          </button>
+          <a href="#profile">简介</a>
+          <a href="#cards">卡片</a>
+          <a href="ai-contract.html">联系</a>
         </div>
       </nav>
     </header>
 
     <main id="main">
-      <section class="hero">
+      <section class="hero" id="profile">
         <div class="hero-copy">
-          <p class="eyebrow">个人 AI 协作档案</p>
-          <h1>欢迎来到我的个人网站</h1>
+          <p class="eyebrow">Personal Site</p>
+          <h1>华思维</h1>
           <p class="lead">
-            这里整理了我的自我素材、人机分工边界、AI 追问记录、协作契约与避坑准则。所有内容都围绕一个核心：让 AI 做辅助，让真实判断留在自己手里。
+            21 届数字经济学生，目前在一家跨境电商相关企业工作。曾因个人心理问题休学一年，也因此更清楚自己适合稳定、低内耗、可持续积累的成长方式。
           </p>
           <div class="hero-actions">
-            <a class="primary-link" href="#cards">查看卡片</a>
-            <a class="secondary-link" href="human-ai-map.html">查看分工图</a>
+            <a class="primary-link" href="self-materials.html">查看个人简介</a>
+            <a class="secondary-link" href="ai-contract.html">联系方式</a>
+          </div>
+        </div>
+
+        <div class="hero-facts" aria-label="个人信息概览">
+          <div class="fact-item">
+            <span>姓名</span>
+            <strong>华思维</strong>
+          </div>
+          <div class="fact-item">
+            <span>专业背景</span>
+            <strong>21 届数字经济</strong>
+          </div>
+          <div class="fact-item">
+            <span>当前方向</span>
+            <strong>跨境电商工作</strong>
           </div>
         </div>
       </section>
 
-      <section class="content-toolbar" aria-label="内容筛选">
-        <label class="search-field">
-          <span>查找内容</span>
-          <input type="search" data-card-search placeholder="输入关键词，例如：契约、追问、分工" autocomplete="off">
-        </label>
-        <div class="filter-group" role="group" aria-label="按类型筛选">
-          <button class="filter-button is-active" type="button" data-filter="all">全部</button>
-          <button class="filter-button" type="button" data-filter="self">自我梳理</button>
-          <button class="filter-button" type="button" data-filter="ai">AI 协作</button>
-          <button class="filter-button" type="button" data-filter="rules">边界准则</button>
+      <section class="section-heading" aria-labelledby="cards-title">
+        <div>
+          <p class="eyebrow">Explore</p>
+          <h2 id="cards-title">个人展示卡片</h2>
         </div>
+        <p>每张卡片都是一个入口：从个人简介到技能、工作现状和联系方式，整体用流动星空串联起来。</p>
       </section>
 
       <section class="card-grid" id="cards" aria-label="个人网站内容卡片">
-        <a class="content-card" href="self-materials.html" data-card data-category="self" data-keywords="自我素材 清单 我是谁 目标 卡点 认知盲区">
-          <span class="card-index">01</span>
-          <h2>自我素材清单</h2>
-          <p>关于我是谁、拥有什么、想要什么，以及现阶段的情绪卡点与认知盲区。</p>
-          <span class="card-link">进入详情</span>
+        <a class="content-card" href="self-materials.html">
+          <span class="card-star" aria-hidden="true">✦</span>
+          <div>
+            <h2>个人简介</h2>
+            <p>关于我的学业背景、休学经历、性格节奏，以及目前更适合的成长方式。</p>
+          </div>
+          <span class="card-meta">
+            <span>Profile</span>
+            <span>查看</span>
+          </span>
         </a>
 
-        <a class="content-card" href="human-ai-map.html" data-card data-category="rules ai" data-keywords="人机分工 四象限 判断权 AI辅助 人审核">
-          <span class="card-index">02</span>
-          <h2>人机分工图</h2>
-          <p>用四象限模型划清哪些事由人决定、哪些事可由 AI 代劳或辅助。</p>
-          <span class="card-link">进入详情</span>
+        <a class="content-card" href="human-ai-map.html">
+          <span class="card-star" aria-hidden="true">✦</span>
+          <div>
+            <h2>技能展示</h2>
+            <p>展示资料整理、结构化表达、数字经济基础、跨境电商实践等能力。</p>
+          </div>
+          <span class="card-meta">
+            <span>Skills</span>
+            <span>查看</span>
+          </span>
         </a>
 
-        <a class="content-card" href="ai-questions.html" data-card data-category="ai self" data-keywords="AI完整追问记录 提问 回答 追问 自我梳理">
-          <span class="card-index">03</span>
-          <h2>AI 完整追问记录</h2>
-          <p>从基础自我梳理到目标卡点梳理，保留完整的追问与回答脉络。</p>
-          <span class="card-link">进入详情</span>
+        <a class="content-card" href="ai-questions.html">
+          <span class="card-star" aria-hidden="true">✦</span>
+          <div>
+            <h2>工作现状</h2>
+            <p>记录我目前在跨境电商方向的实践状态，以及正在积累的职业能力。</p>
+          </div>
+          <span class="card-meta">
+            <span>Work</span>
+            <span>查看</span>
+          </span>
         </a>
 
-        <a class="content-card" href="ai-contract.html" data-card data-category="ai rules" data-keywords="AI协作契约 永久生效 五条约定 边界 责任">
-          <span class="card-index">04</span>
-          <h2>AI 协作契约</h2>
-          <p>明确 AI 可以做什么、不能替我决定什么，以及我必须如何检查输出。</p>
-          <span class="card-link">进入详情</span>
-        </a>
-
-        <a class="content-card" href="collaboration-pitfalls.html" data-card data-category="rules ai" data-keywords="人机协作避坑准则 理解错觉 完成错觉 能力错觉 高水平使用">
-          <span class="card-index">05</span>
-          <h2>人机协作避坑准则</h2>
-          <p>围绕理解错觉、完成错觉、能力错觉，建立日常自查与使用边界。</p>
-          <span class="card-link">进入详情</span>
+        <a class="content-card" href="ai-contract.html">
+          <span class="card-star" aria-hidden="true">✦</span>
+          <div>
+            <h2>联系方式</h2>
+            <p>保留最直接的电话联系方式，也说明适合我的沟通与协作方式。</p>
+          </div>
+          <span class="card-meta">
+            <span>Contact</span>
+            <span>查看</span>
+          </span>
         </a>
       </section>
-
-      <p class="empty-state" data-empty-state hidden>没有找到匹配的卡片，换个关键词试试。</p>
     </main>
 
     <footer class="site-footer">
-      <p>© 2026 华思维。内容整理自个人 AI 协作素材清单。</p>
+      <p>© 2026 华思维。个人网站内容可继续补充更新。</p>
     </footer>
   </body>
 </html>

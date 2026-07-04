@@ -1,132 +1,102 @@
 (function () {
-  const root = document.documentElement;
-  const themeToggle = document.querySelector("[data-theme-toggle]");
-  const themeIcon = document.querySelector("[data-theme-icon]");
-  const savedTheme = window.localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
+  const canvas = document.querySelector("[data-starfield]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function setTheme(theme) {
-    root.dataset.theme = theme;
-    if (themeIcon) {
-      themeIcon.textContent = theme === "dark" ? "☀" : "◐";
-    }
-    window.localStorage.setItem("theme", theme);
-  }
+  if (canvas) {
+    const context = canvas.getContext("2d");
+    let stars = [];
+    let width = 0;
+    let height = 0;
+    let animationFrame = 0;
 
-  setTheme(initialTheme);
-
-  if (themeToggle) {
-    themeToggle.addEventListener("click", function () {
-      setTheme(root.dataset.theme === "dark" ? "light" : "dark");
-    });
-  }
-
-  const cards = Array.from(document.querySelectorAll("[data-card]"));
-  const searchInput = document.querySelector("[data-card-search]");
-  const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
-  const emptyState = document.querySelector("[data-empty-state]");
-  let activeFilter = "all";
-
-  function normalize(value) {
-    return value.toLowerCase().replace(/\s+/g, "");
-  }
-
-  function filterCards() {
-    if (!cards.length) {
-      return;
+    function randomBetween(min, max) {
+      return min + Math.random() * (max - min);
     }
 
-    const query = normalize(searchInput ? searchInput.value : "");
-    let visibleCount = 0;
+    function resize() {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.floor(width * ratio);
+      canvas.height = Math.floor(height * ratio);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-    cards.forEach(function (card) {
-      const categories = (card.dataset.category || "").split(/\s+/);
-      const text = normalize(card.textContent + " " + (card.dataset.keywords || ""));
-      const matchesFilter = activeFilter === "all" || categories.includes(activeFilter);
-      const matchesQuery = !query || text.includes(query);
-      const shouldShow = matchesFilter && matchesQuery;
-
-      card.hidden = !shouldShow;
-      if (shouldShow) {
-        visibleCount += 1;
-      }
-    });
-
-    if (emptyState) {
-      emptyState.hidden = visibleCount !== 0;
-    }
-  }
-
-  if (searchInput) {
-    searchInput.addEventListener("input", filterCards);
-  }
-
-  filterButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      activeFilter = button.dataset.filter;
-      filterButtons.forEach(function (item) {
-        item.classList.toggle("is-active", item === button);
+      const total = Math.min(240, Math.max(120, Math.floor((width * height) / 6200)));
+      stars = Array.from({ length: total }, function () {
+        return {
+          x: randomBetween(0, width),
+          y: randomBetween(0, height),
+          radius: randomBetween(0.45, 1.9),
+          speed: randomBetween(0.08, 0.34),
+          drift: randomBetween(-0.1, 0.16),
+          alpha: randomBetween(0.35, 0.95),
+          twinkle: randomBetween(0.006, 0.02),
+          phase: randomBetween(0, Math.PI * 2)
+        };
       });
-      filterCards();
-    });
-  });
+    }
 
-  const copyButtons = Array.from(document.querySelectorAll("[data-copy-target]"));
-  copyButtons.forEach(function (button) {
-    button.addEventListener("click", async function () {
-      const target = document.querySelector(button.dataset.copyTarget);
-      if (!target) {
-        return;
+    function draw() {
+      context.clearRect(0, 0, width, height);
+
+      stars.forEach(function (star) {
+        star.y += star.speed;
+        star.x += star.drift;
+        star.phase += star.twinkle;
+
+        if (star.y > height + 6) {
+          star.y = -6;
+          star.x = randomBetween(0, width);
+        }
+
+        if (star.x < -6) {
+          star.x = width + 6;
+        } else if (star.x > width + 6) {
+          star.x = -6;
+        }
+
+        const pulse = 0.65 + Math.sin(star.phase) * 0.35;
+        context.beginPath();
+        context.fillStyle = `rgba(220, 244, 255, ${star.alpha * pulse})`;
+        context.shadowColor = "rgba(134, 232, 255, 0.8)";
+        context.shadowBlur = star.radius * 5;
+        context.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        context.fill();
+      });
+
+      context.shadowBlur = 0;
+
+      if (!reduceMotion) {
+        animationFrame = window.requestAnimationFrame(draw);
       }
+    }
 
+    resize();
+    draw();
+    window.addEventListener("resize", resize);
+
+    if (reduceMotion) {
+      window.cancelAnimationFrame(animationFrame);
+    }
+  }
+
+  const copyButtons = Array.from(document.querySelectorAll("[data-copy-text]"));
+
+  copyButtons.forEach(function (button) {
+    const defaultText = button.textContent;
+
+    button.addEventListener("click", async function () {
       try {
-        await navigator.clipboard.writeText(target.innerText.trim());
+        await navigator.clipboard.writeText(button.dataset.copyText);
         button.textContent = "已复制";
         window.setTimeout(function () {
-          button.textContent = "复制文本";
+          button.textContent = defaultText;
         }, 1400);
       } catch (error) {
         button.textContent = "复制失败";
       }
     });
   });
-
-  const modal = document.querySelector("[data-modal]");
-  const modalOpeners = Array.from(document.querySelectorAll("[data-open-modal]"));
-  const modalClosers = Array.from(document.querySelectorAll("[data-close-modal]"));
-
-  function closeModal() {
-    if (modal) {
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
-    }
-  }
-
-  modalOpeners.forEach(function (button) {
-    button.addEventListener("click", function () {
-      if (modal) {
-        modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-      }
-    });
-  });
-
-  modalClosers.forEach(function (button) {
-    button.addEventListener("click", closeModal);
-  });
-
-  if (modal) {
-    modal.addEventListener("click", function (event) {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        closeModal();
-      }
-    });
-  }
 })();
