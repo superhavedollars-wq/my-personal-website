@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>我的个人网站</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      background: #f5f7fb;
+      color: #111;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .intro {
+      background: white;
+      padding: 48px;
+      border-radius: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin: 0 0 18px;
+    }
+
+    .intro p {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .explore {
+      margin-top: 24px;
+      font-size: 16px;
+      color: #777;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      display: block;
+      background: white;
+      padding: 26px;
+      border-radius: 22px;
+      text-decoration: none;
+      color: #111;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .card p {
+      margin: 0;
+      color: #666;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .arrow {
+      margin-top: 18px;
+      color: #0070f3;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero">
+    <div class="container">
+
+      <div class="intro">
+        <h1>欢迎来到我的个人网站</h1>
+        <p>
+          Hi, I'm Zhang Ning.<br>
+          这里记录我的成长、自我探索、AI 协作、学习、思考与未来。
+        </p>
+        <div class="explore">↓ Explore</div>
+      </div>
+
+      <div class="grid">
+
+        <a class="card" href="about.html">
+          <h2>📖 自我素材清单</h2>
+          <p>认识我是谁、我拥有什么、我的经历资产、能力优势与个人限制。</p>
+          <div class="arrow">进入 →</div>
+        </a>
+
+        <a class="card" href="mindmap.html">
+          <h2>🧠 人机分工图</h2>
+          <p>梳理我和 AI 之间的分工边界，明确哪些事由我判断，哪些事由 AI 辅助。</p>
+          <div class="arrow">进入 →</div>
+        </a>
+
+        <a class="card" href="interview.html">
+          <h2>💬 AI 完整追问记录</h2>
+          <p>记录 AI 如何通过连续追问，帮助我梳理经历、优势、目标与心理卡点。</p>
+          <div class="arrow">进入 →</div>
+        </a>
+
+        <a class="card" href="contract.html">
+          <h2>📜 个人 AI 协作契约</h2>
+          <p>我与 AI 协作时长期遵守的原则、边界与五条核心约定。</p>
+          <div class="arrow">进入 →</div>
+        </a>
+
+        <a class="card" href="guide.html">
+          <h2>⚠️ 人机协作避坑准则</h2>
+          <p>规避理解错觉、完成错觉和能力错觉，避免过度依赖 AI。</p>
+          <div class="arrow">进入 →</div>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
