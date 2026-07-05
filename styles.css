@@ -446,7 +446,9 @@ h3 {
 .content-card:hover,
 .content-card:focus-visible,
 .knowledge-card:hover,
-.knowledge-card:focus-visible {
+.knowledge-card:focus-visible,
+.object-link:hover,
+.object-link:focus-visible {
   transform: translateY(-6px);
   border-color: var(--border-strong);
   background: var(--surface-strong);
@@ -676,6 +678,47 @@ h3 {
 .article-card li + li,
 .note-card li + li {
   margin-top: 8px;
+}
+
+.object-link {
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.48s ease, border-color 0.48s ease, background 0.48s ease, box-shadow 0.48s ease;
+}
+
+.object-grid {
+  margin-top: 8px;
+}
+
+.full-span {
+  grid-column: 1 / -1;
+}
+
+.link-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.link-list a {
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent-strong);
+  padding: 11px 13px;
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: transform 0.32s ease, border-color 0.32s ease, background 0.32s ease, box-shadow 0.32s ease;
+}
+
+.link-list a:hover,
+.link-list a:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 28px rgba(213, 231, 246, 0.18);
 }
 
 .profile-summary,
