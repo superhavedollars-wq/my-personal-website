@@ -602,7 +602,7 @@ h3 {
 }
 
 .knowledge-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
 }
 
 .note-grid {
@@ -760,6 +760,161 @@ h3 {
   font-weight: 650;
 }
 
+body.dialogue-page {
+  background:
+    radial-gradient(circle at 52% 18%, rgba(126, 200, 255, 0.18), transparent 28rem),
+    linear-gradient(180deg, #0b2543 0%, #08192f 42%, #061425 100%);
+}
+
+body.dialogue-page::before {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(126, 200, 255, 0.08), transparent 17rem),
+    radial-gradient(circle at 78% 10%, rgba(255, 255, 255, 0.1), transparent 22rem),
+    linear-gradient(180deg, rgba(7, 21, 39, 0.2), rgba(5, 15, 29, 0.62));
+}
+
+body.dialogue-page::after {
+  background:
+    radial-gradient(ellipse at 50% 108%, rgba(126, 200, 255, 0.12), transparent 28rem),
+    linear-gradient(180deg, transparent 0%, rgba(2, 8, 18, 0.32) 100%);
+}
+
+body.dialogue-page .starfield {
+  opacity: 0.5;
+}
+
+.dialogue-main {
+  max-width: 1040px;
+}
+
+.dialogue-hero {
+  min-height: calc(100vh - 78px);
+  align-content: center;
+  padding-bottom: 110px;
+}
+
+.dialogue-hero .lead span {
+  display: block;
+}
+
+.dialogue-journal {
+  display: grid;
+  gap: 96px;
+  padding: 20px 0 132px;
+}
+
+.dialogue-card {
+  position: relative;
+  display: grid;
+  gap: 34px;
+  width: min(100%, 940px);
+  min-height: 360px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius);
+  background: rgba(7, 20, 38, 0.42);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(16px);
+  padding: 42px;
+}
+
+.dialogue-card::before {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 44px;
+  height: 1px;
+  background: rgba(126, 200, 255, 0.34);
+  content: "";
+}
+
+.dialogue-record {
+  width: fit-content;
+  color: rgba(213, 231, 246, 0.62);
+  font-family: var(--display);
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+.dialogue-line {
+  display: grid;
+  gap: 12px;
+  max-width: 620px;
+}
+
+.dialogue-line span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dialogue-line p {
+  margin-bottom: 0;
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 2.05;
+}
+
+.ai-line {
+  justify-self: start;
+  color: #7ec8ff;
+}
+
+.ai-line span {
+  color: rgba(126, 200, 255, 0.78);
+}
+
+.me-line {
+  justify-self: end;
+  color: #ffffff;
+  text-align: right;
+}
+
+.me-line span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.dialogue-silence {
+  max-width: 620px;
+  margin: 4px auto 0;
+  color: rgba(213, 231, 246, 0.58);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 2;
+  text-align: center;
+}
+
+.dialogue-ending {
+  max-width: 760px;
+  margin: 0 auto 118px;
+  color: rgba(213, 231, 246, 0.78);
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 2.1;
+  text-align: center;
+}
+
+.dialogue-ending strong {
+  display: block;
+  margin-top: 34px;
+  color: #ffffff;
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(42px);
+  transition: opacity 1.35s ease, transform 1.35s ease;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes quietFade {
   from {
     opacity: 0;
@@ -864,6 +1019,25 @@ h3 {
     min-height: 248px;
   }
 
+  .dialogue-hero {
+    min-height: auto;
+    padding-bottom: 70px;
+  }
+
+  .dialogue-journal {
+    gap: 72px;
+    padding-bottom: 96px;
+  }
+
+  .dialogue-card {
+    min-height: 0;
+    padding: 28px;
+  }
+
+  .dialogue-line p {
+    font-size: 18px;
+  }
+
   .nav-links {
     gap: 10px 13px;
   }
@@ -916,8 +1090,31 @@ h3 {
   .content-card,
   .fact-item,
   .quiet-panel,
-  .about-panel {
+  .about-panel,
+  .dialogue-card {
     padding: 20px;
+  }
+
+  .dialogue-card {
+    gap: 28px;
+  }
+
+  .dialogue-line {
+    max-width: 100%;
+  }
+
+  .dialogue-line p {
+    font-size: 17px;
+    line-height: 1.92;
+  }
+
+  .dialogue-ending {
+    margin-bottom: 82px;
+    font-size: 18px;
+  }
+
+  .dialogue-ending strong {
+    font-size: 24px;
   }
 
   .quiet-panel,

@@ -11,6 +11,11 @@
     let animationFrame = 0;
     let lastTime = performance.now();
     let nextMeteorAt = lastTime + randomBetween(15000, 30000);
+    const parallaxEnabled = document.body.classList.contains("dialogue-page") && !reduceMotion;
+    let pointerX = 0;
+    let pointerY = 0;
+    let targetPointerX = 0;
+    let targetPointerY = 0;
 
     function randomBetween(min, max) {
       return min + Math.random() * (max - min);
@@ -36,7 +41,8 @@
           radius: randomBetween(0.28, 1.05),
           alpha: randomBetween(0.06, 0.22),
           twinkle: randomBetween(0.0009, 0.0032),
-          phase: randomBetween(0, Math.PI * 2)
+          phase: randomBetween(0, Math.PI * 2),
+          depth: randomBetween(4, 18)
         };
       });
     }
@@ -60,12 +66,14 @@
       stars.forEach(function (star) {
         star.phase += star.twinkle;
         const pulse = 0.72 + Math.sin(star.phase) * 0.28;
+        const drawX = star.x + pointerX * star.depth;
+        const drawY = star.y + pointerY * star.depth;
 
         context.beginPath();
         context.fillStyle = `rgba(236, 246, 255, ${star.alpha * pulse})`;
         context.shadowColor = "rgba(214, 231, 246, 0.42)";
         context.shadowBlur = star.radius * 4;
-        context.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        context.arc(drawX, drawY, star.radius, 0, Math.PI * 2);
         context.fill();
       });
 
@@ -103,6 +111,11 @@
       lastTime = now;
       context.clearRect(0, 0, width, height);
 
+      if (parallaxEnabled) {
+        pointerX += (targetPointerX - pointerX) * 0.035;
+        pointerY += (targetPointerY - pointerY) * 0.035;
+      }
+
       drawStars();
 
       if (!reduceMotion && now > nextMeteorAt && meteors.length < 2) {
@@ -126,6 +139,13 @@
     draw(lastTime);
     window.addEventListener("resize", resize);
 
+    if (parallaxEnabled) {
+      window.addEventListener("pointermove", function (event) {
+        targetPointerX = (event.clientX / Math.max(width, 1) - 0.5) * 1.2;
+        targetPointerY = (event.clientY / Math.max(height, 1) - 0.5) * 1.2;
+      });
+    }
+
     if (reduceMotion) {
       window.cancelAnimationFrame(animationFrame);
     }
@@ -148,4 +168,30 @@
       }
     });
   });
+
+  const revealItems = Array.from(document.querySelectorAll(".reveal-on-scroll"));
+
+  if (revealItems.length) {
+    if ("IntersectionObserver" in window && !reduceMotion) {
+      const observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      );
+
+      revealItems.forEach(function (item) {
+        observer.observe(item);
+      });
+    } else {
+      revealItems.forEach(function (item) {
+        item.classList.add("is-visible");
+      });
+    }
+  }
 })();
