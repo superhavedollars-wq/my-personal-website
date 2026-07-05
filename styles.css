@@ -282,7 +282,7 @@ h1 {
 
 .hero-facts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -378,6 +378,13 @@ h1 {
   background: var(--surface-strong);
 }
 
+.content-card.is-knowledge::before {
+  background:
+    linear-gradient(135deg, rgba(255, 226, 154, 0.18), transparent 32%),
+    linear-gradient(315deg, rgba(134, 232, 255, 0.18), transparent 40%),
+    radial-gradient(circle at 80% 12%, rgba(255, 255, 255, 0.18), transparent 24%);
+}
+
 .card-star {
   display: grid;
   place-items: center;
@@ -454,7 +461,9 @@ h1 {
 
 .article-grid,
 .skill-grid,
-.contact-grid {
+.contact-grid,
+.knowledge-grid,
+.note-grid {
   display: grid;
   gap: 14px;
 }
@@ -472,16 +481,29 @@ h1 {
   grid-template-columns: 1fr 1fr;
 }
 
+.knowledge-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.note-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .article-card,
 .timeline-item,
-.contact-card {
+.contact-card,
+.knowledge-card,
+.note-card {
   padding: 22px;
 }
 
 .article-card h2,
 .article-card h3,
 .timeline-item h3,
-.contact-card h2 {
+.contact-card h2,
+.knowledge-card h2,
+.note-card h2,
+.note-card h3 {
   color: var(--text);
   line-height: 1.32;
 }
@@ -580,6 +602,75 @@ h1 {
   padding: 12px 14px;
 }
 
+.knowledge-card,
+.note-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.knowledge-card {
+  position: relative;
+  min-height: 250px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.knowledge-card::before {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  color: var(--gold);
+  content: "✦";
+  font-size: 22px;
+  opacity: 0.88;
+}
+
+.knowledge-card p,
+.note-card p,
+.note-card li {
+  color: var(--muted);
+}
+
+.knowledge-card h2,
+.note-card h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.knowledge-card .card-meta {
+  margin-top: 18px;
+}
+
+.note-card {
+  display: grid;
+  gap: 12px;
+}
+
+.note-card h3 {
+  margin: 10px 0 4px;
+  font-size: 18px;
+}
+
+.note-card ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.vault-path {
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--accent-strong);
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
 @keyframes starDrift {
   from {
     background-position: 0 0, 0 0, 0 0;
@@ -607,10 +698,13 @@ h1 {
 
 @media (max-width: 1020px) {
   .card-grid,
-  .skill-grid {
+  .skill-grid,
+  .knowledge-grid,
+  .note-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .hero-facts,
   .article-grid {
     grid-template-columns: 1fr;
   }
@@ -637,7 +731,9 @@ h1 {
   .hero-facts,
   .card-grid,
   .skill-grid,
-  .contact-grid {
+  .contact-grid,
+  .knowledge-grid,
+  .note-grid {
     grid-template-columns: 1fr;
   }
 
@@ -675,6 +771,8 @@ h1 {
   .article-card,
   .timeline-item,
   .contact-card,
+  .knowledge-card,
+  .note-card,
   .content-card,
   .fact-item {
     padding: 18px;

@@ -16,6 +16,11 @@ const pages = [
   { file: "human-ai-map.html", url: `${normalizedUrl}human-ai-map.html` },
   { file: "ai-questions.html", url: `${normalizedUrl}ai-questions.html` },
   { file: "ai-contract.html", url: `${normalizedUrl}ai-contract.html` },
+  { file: "knowledge-base.html", url: `${normalizedUrl}knowledge-base.html` },
+  { file: "knowledge-learning.html", url: `${normalizedUrl}knowledge-learning.html` },
+  { file: "knowledge-projects.html", url: `${normalizedUrl}knowledge-projects.html` },
+  { file: "knowledge-portfolio.html", url: `${normalizedUrl}knowledge-portfolio.html` },
+  { file: "knowledge-blog.html", url: `${normalizedUrl}knowledge-blog.html` },
 ];
 
 for (const page of pages) {
@@ -41,7 +46,7 @@ ${pages
   .map(
     (page) => `  <url>
     <loc>${page.url}</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-05</lastmod>
   </url>`,
   )
   .join("\n")}
