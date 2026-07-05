@@ -5,9 +5,12 @@
   if (canvas) {
     const context = canvas.getContext("2d");
     let stars = [];
+    let meteors = [];
     let width = 0;
     let height = 0;
     let animationFrame = 0;
+    let lastTime = performance.now();
+    let nextMeteorAt = lastTime + randomBetween(15000, 30000);
 
     function randomBetween(min, max) {
       return min + Math.random() * (max - min);
@@ -23,50 +26,96 @@
       canvas.style.height = `${height}px`;
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-      const total = Math.min(240, Math.max(120, Math.floor((width * height) / 6200)));
+      const total = Math.min(42, Math.max(18, Math.floor((width * height) / 36000)));
       stars = Array.from({ length: total }, function () {
+        const upperSky = Math.random() < 0.82;
+
         return {
           x: randomBetween(0, width),
-          y: randomBetween(0, height),
-          radius: randomBetween(0.45, 1.9),
-          speed: randomBetween(0.08, 0.34),
-          drift: randomBetween(-0.1, 0.16),
-          alpha: randomBetween(0.35, 0.95),
-          twinkle: randomBetween(0.006, 0.02),
+          y: upperSky ? randomBetween(0, height * 0.58) : randomBetween(height * 0.58, height),
+          radius: randomBetween(0.28, 1.05),
+          alpha: randomBetween(0.06, 0.22),
+          twinkle: randomBetween(0.0009, 0.0032),
           phase: randomBetween(0, Math.PI * 2)
         };
       });
     }
 
-    function draw() {
-      context.clearRect(0, 0, width, height);
+    function scheduleMeteor(now) {
+      nextMeteorAt = now + randomBetween(15000, 30000);
+    }
 
+    function createMeteor() {
+      meteors.push({
+        x: randomBetween(width * 0.72, width + 160),
+        y: randomBetween(28, Math.max(96, height * 0.26)),
+        length: randomBetween(120, 190),
+        speed: randomBetween(180, 255),
+        alpha: randomBetween(0.22, 0.38),
+        width: randomBetween(0.8, 1.25)
+      });
+    }
+
+    function drawStars() {
       stars.forEach(function (star) {
-        star.y += star.speed;
-        star.x += star.drift;
         star.phase += star.twinkle;
+        const pulse = 0.72 + Math.sin(star.phase) * 0.28;
 
-        if (star.y > height + 6) {
-          star.y = -6;
-          star.x = randomBetween(0, width);
-        }
-
-        if (star.x < -6) {
-          star.x = width + 6;
-        } else if (star.x > width + 6) {
-          star.x = -6;
-        }
-
-        const pulse = 0.65 + Math.sin(star.phase) * 0.35;
         context.beginPath();
-        context.fillStyle = `rgba(220, 244, 255, ${star.alpha * pulse})`;
-        context.shadowColor = "rgba(134, 232, 255, 0.8)";
-        context.shadowBlur = star.radius * 5;
+        context.fillStyle = `rgba(236, 246, 255, ${star.alpha * pulse})`;
+        context.shadowColor = "rgba(214, 231, 246, 0.42)";
+        context.shadowBlur = star.radius * 4;
         context.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         context.fill();
       });
 
       context.shadowBlur = 0;
+    }
+
+    function drawMeteor(meteor) {
+      const tailX = meteor.x + meteor.length;
+      const tailY = meteor.y - meteor.length * 0.46;
+      const gradient = context.createLinearGradient(tailX, tailY, meteor.x, meteor.y);
+
+      gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+      gradient.addColorStop(0.72, `rgba(235, 246, 255, ${meteor.alpha * 0.42})`);
+      gradient.addColorStop(1, `rgba(255, 255, 255, ${meteor.alpha})`);
+
+      context.beginPath();
+      context.strokeStyle = gradient;
+      context.lineWidth = meteor.width;
+      context.lineCap = "round";
+      context.shadowColor = "rgba(231, 244, 255, 0.42)";
+      context.shadowBlur = 8;
+      context.moveTo(tailX, tailY);
+      context.lineTo(meteor.x, meteor.y);
+      context.stroke();
+      context.shadowBlur = 0;
+
+      context.beginPath();
+      context.fillStyle = `rgba(255, 255, 255, ${meteor.alpha * 0.62})`;
+      context.arc(meteor.x, meteor.y, meteor.width * 1.2, 0, Math.PI * 2);
+      context.fill();
+    }
+
+    function draw(now) {
+      const delta = Math.min(48, now - lastTime) / 1000;
+      lastTime = now;
+      context.clearRect(0, 0, width, height);
+
+      drawStars();
+
+      if (!reduceMotion && now > nextMeteorAt && meteors.length < 2) {
+        createMeteor();
+        scheduleMeteor(now);
+      }
+
+      meteors = meteors.filter(function (meteor) {
+        meteor.x -= meteor.speed * delta;
+        meteor.y += meteor.speed * 0.46 * delta;
+        drawMeteor(meteor);
+        return meteor.x > -meteor.length && meteor.y < height + meteor.length;
+      });
 
       if (!reduceMotion) {
         animationFrame = window.requestAnimationFrame(draw);
@@ -74,7 +123,7 @@
     }
 
     resize();
-    draw();
+    draw(lastTime);
     window.addEventListener("resize", resize);
 
     if (reduceMotion) {

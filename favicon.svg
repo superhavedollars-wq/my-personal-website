@@ -1,7 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="星">
-  <rect width="64" height="64" rx="14" fill="#060a18"/>
-  <path d="M32 7l5.2 17.8L55 32l-17.8 7.2L32 57l-5.2-17.8L9 32l17.8-7.2L32 7z" fill="#ffe29a"/>
-  <circle cx="16" cy="15" r="2.2" fill="#86e8ff"/>
-  <circle cx="49" cy="18" r="1.8" fill="#ff9fc2"/>
-  <circle cx="48" cy="49" r="2.1" fill="#b8f2ff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="凌晨天空">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#8fafd8"/>
+      <stop offset=".56" stop-color="#bfd2e8"/>
+      <stop offset="1" stop-color="#f8fafd"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#sky)"/>
+  <circle cx="22" cy="18" r="2" fill="#f8fbff" opacity=".78"/>
+  <path d="M13 46 C23 34 32 39 40 30 C47 37 52 39 58 46 Z" fill="#5f7489" opacity=".28"/>
+  <path d="M8 50 C20 42 34 44 56 50" fill="none" stroke="#ffffff" stroke-opacity=".48" stroke-width="2" stroke-linecap="round"/>
+  <path d="M45 17 L28 27" stroke="#f7fbff" stroke-opacity=".72" stroke-width="1.8" stroke-linecap="round"/>
 </svg>
