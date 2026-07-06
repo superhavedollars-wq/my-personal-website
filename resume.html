@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>华思维个人简历网站 | GEO 简历页</title>
+    <meta name="description" content="华思维的个人简历网站。21届数字经济学生，关注 AI协作、Shopify独立站、Meta广告、跨境电商运营、个人网站和知识管理。">
+    <meta name="keywords" content="华思维,个人简历,数字经济,AI协作,Shopify独立站,Meta广告,Facebook广告,跨境电商,个人网站,知识管理,GEO">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://superhavedollars-wq.github.io/my-personal-website/resume.html">
+    <meta property="og:url" content="https://superhavedollars-wq.github.io/my-personal-website/resume.html">
+    <meta property="og:title" content="华思维个人简历网站">
+    <meta property="og:description" content="一份面向 AI 和 HR 都能读懂的蓝白风个人简历网站，展示跨境电商、Shopify、Meta广告和AI协作实践。">
+    <meta property="og:type" content="profile">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      :root {
+        --resume-ink: #172b4d;
+        --resume-text: #38516f;
+        --resume-muted: #6e8199;
+        --resume-line: rgba(59, 130, 246, 0.16);
+        --resume-blue: #1d6fd6;
+        --resume-blue-soft: #eaf4ff;
+        --resume-bg: #f6fbff;
+        --resume-white: rgba(255, 255, 255, 0.9);
+        --resume-shadow: 0 20px 60px rgba(31, 87, 148, 0.12);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body.resume-page {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--resume-text);
+        background:
+          radial-gradient(circle at 14% 10%, rgba(185, 221, 255, 0.9), transparent 34%),
+          radial-gradient(circle at 84% 0%, rgba(230, 244, 255, 0.9), transparent 26%),
+          linear-gradient(180deg, #e9f6ff 0%, #f7fbff 44%, #ffffff 100%);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        line-height: 1.75;
+      }
+
+      .resume-shell {
+        width: min(1160px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .resume-nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(20px);
+        background: rgba(246, 251, 255, 0.78);
+        border-bottom: 1px solid rgba(104, 153, 210, 0.16);
+      }
+
+      .resume-nav-inner {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .resume-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--resume-ink);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .resume-brand-mark {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        color: #fff;
+        background: linear-gradient(135deg, #2a79d8, #72b7ff);
+        border-radius: 14px;
+        box-shadow: 0 12px 24px rgba(42, 121, 216, 0.22);
+      }
+
+      .resume-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .resume-links a {
+        padding: 8px 12px;
+        color: #4f6885;
+        font-size: 14px;
+        text-decoration: none;
+        border-radius: 999px;
+      }
+
+      .resume-links a:hover,
+      .resume-links a[aria-current="page"] {
+        color: var(--resume-blue);
+        background: rgba(29, 111, 214, 0.08);
+      }
+
+      .resume-hero {
+        padding: 76px 0 42px;
+      }
+
+      .resume-hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 40px;
+        align-items: stretch;
+      }
+
+      .resume-eyebrow {
+        margin: 0 0 12px;
+        color: var(--resume-blue);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      .resume-title {
+        margin-bottom: 16px;
+        color: var(--resume-ink);
+        font-size: clamp(42px, 7vw, 74px);
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        line-height: 1.06;
+      }
+
+      .resume-subtitle {
+        max-width: 780px;
+        margin-bottom: 26px;
+        color: #405a78;
+        font-size: clamp(20px, 3vw, 30px);
+        font-weight: 600;
+        line-height: 1.45;
+      }
+
+      .resume-summary {
+        max-width: 760px;
+        margin-bottom: 28px;
+        color: var(--resume-muted);
+        font-size: 18px;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0 0 28px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .tag-row li,
+      .metric-pill {
+        padding: 8px 14px;
+        color: #234c80;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--resume-line);
+        border-radius: 999px;
+        box-shadow: 0 8px 22px rgba(31, 87, 148, 0.07);
+      }
+
+      .resume-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .resume-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        color: var(--resume-blue);
+        background: rgba(255, 255, 255, 0.68);
+        border: 1px solid rgba(29, 111, 214, 0.2);
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 10px 28px rgba(31, 87, 148, 0.08);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      }
+
+      .resume-button.primary {
+        color: #fff;
+        background: linear-gradient(135deg, #1d6fd6, #59a8f4);
+        border-color: transparent;
+      }
+
+      .resume-button:hover {
+        transform: translateY(-2px);
+        background: #fff;
+        box-shadow: 0 18px 42px rgba(31, 87, 148, 0.16);
+      }
+
+      .resume-button.primary:hover {
+        color: #fff;
+      }
+
+      .photo-card {
+        display: flex;
+        min-height: 360px;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 24px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(238, 247, 255, 0.7));
+        border: 1px solid rgba(72, 133, 202, 0.18);
+        border-radius: 28px;
+        box-shadow: var(--resume-shadow);
+      }
+
+      .photo-placeholder {
+        display: grid;
+        min-height: 238px;
+        place-items: center;
+        padding: 24px;
+        text-align: center;
+        color: #6a7f98;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(226, 240, 253, 0.8)),
+          repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(29, 111, 214, 0.05) 10px, rgba(29, 111, 214, 0.05) 20px);
+        border: 1px dashed rgba(29, 111, 214, 0.34);
+        border-radius: 22px;
+      }
+
+      .photo-placeholder strong {
+        display: block;
+        margin-top: 10px;
+        color: #314d6d;
+        font-size: 18px;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 10px;
+        margin: 20px 0 0;
+      }
+
+      .contact-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(72, 133, 202, 0.14);
+        color: #58708a;
+        font-size: 14px;
+      }
+
+      .contact-item strong,
+      .contact-item a {
+        color: var(--resume-ink);
+        text-align: right;
+        text-decoration: none;
+      }
+
+      .section {
+        padding: 56px 0;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+        gap: 32px;
+        align-items: end;
+        margin-bottom: 24px;
+      }
+
+      .section-head h2 {
+        margin-bottom: 0;
+        color: var(--resume-ink);
+        font-size: clamp(28px, 4vw, 42px);
+        line-height: 1.2;
+      }
+
+      .section-head p {
+        margin-bottom: 0;
+        color: var(--resume-muted);
+      }
+
+      .panel,
+      .mini-card,
+      .project-card,
+      .score-card {
+        background: var(--resume-white);
+        border: 1px solid rgba(72, 133, 202, 0.16);
+        border-radius: 24px;
+        box-shadow: var(--resume-shadow);
+      }
+
+      .panel {
+        padding: clamp(24px, 4vw, 36px);
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .mini-card {
+        padding: 20px;
+      }
+
+      .mini-card span {
+        color: var(--resume-blue);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .mini-card strong {
+        display: block;
+        margin-top: 8px;
+        color: var(--resume-ink);
+        font-size: 22px;
+      }
+
+      .resume-table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        color: #38516f;
+        font-size: 15px;
+      }
+
+      .resume-table th,
+      .resume-table td {
+        padding: 15px 16px;
+        vertical-align: top;
+        border-bottom: 1px solid rgba(72, 133, 202, 0.14);
+        text-align: left;
+      }
+
+      .resume-table th {
+        width: 22%;
+        color: var(--resume-ink);
+        background: rgba(234, 244, 255, 0.72);
+        font-weight: 700;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .project-card {
+        padding: 24px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 24px 58px rgba(31, 87, 148, 0.16);
+      }
+
+      .project-card h3 {
+        margin-bottom: 10px;
+        color: var(--resume-ink);
+        font-size: 22px;
+      }
+
+      .project-card p {
+        color: #4b647f;
+      }
+
+      .project-card ul,
+      .score-card ul {
+        margin: 0;
+        padding-left: 18px;
+        color: #526b85;
+      }
+
+      .project-card li,
+      .score-card li {
+        margin: 8px 0;
+      }
+
+      .metrics-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 16px 0;
+      }
+
+      .metric-pill strong {
+        color: var(--resume-ink);
+      }
+
+      .quote-panel {
+        padding: clamp(28px, 5vw, 46px);
+        color: #244260;
+        background: linear-gradient(135deg, rgba(224, 241, 255, 0.88), rgba(255, 255, 255, 0.86));
+        border: 1px solid rgba(72, 133, 202, 0.18);
+        border-radius: 30px;
+        box-shadow: var(--resume-shadow);
+      }
+
+      .quote-panel blockquote {
+        margin: 0;
+        color: var(--resume-ink);
+        font-size: clamp(22px, 3vw, 34px);
+        font-weight: 700;
+        line-height: 1.55;
+      }
+
+      .quote-panel cite {
+        display: block;
+        margin-top: 18px;
+        color: var(--resume-muted);
+        font-style: normal;
+      }
+
+      .score-grid {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 18px;
+      }
+
+      .score-card {
+        padding: 24px;
+      }
+
+      .score-number {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        color: var(--resume-blue);
+        font-size: 48px;
+        font-weight: 800;
+      }
+
+      .score-number span {
+        color: var(--resume-muted);
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .field-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .field-item {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 18px;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.64);
+        border: 1px solid rgba(72, 133, 202, 0.14);
+        border-radius: 18px;
+      }
+
+      .field-item strong {
+        color: var(--resume-ink);
+      }
+
+      .field-item p {
+        margin-bottom: 6px;
+      }
+
+      .link-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .link-list a {
+        padding: 9px 13px;
+        color: var(--resume-blue);
+        background: rgba(234, 244, 255, 0.78);
+        border: 1px solid rgba(29, 111, 214, 0.15);
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .footer-note {
+        padding: 34px 0 56px;
+        color: #7890a9;
+        text-align: center;
+      }
+
+      .fade-in {
+        animation: resumeFade 0.9s ease both;
+      }
+
+      .delay-1 {
+        animation-delay: 0.12s;
+      }
+
+      .delay-2 {
+        animation-delay: 0.22s;
+      }
+
+      @keyframes resumeFade {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .resume-hero-grid,
+        .section-head,
+        .project-grid,
+        .score-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .mini-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .resume-shell {
+          width: min(100% - 28px, 1160px);
+        }
+
+        .resume-nav-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 14px 0;
+        }
+
+        .resume-links {
+          justify-content: flex-start;
+        }
+
+        .resume-hero {
+          padding-top: 46px;
+        }
+
+        .photo-card {
+          min-height: auto;
+        }
+
+        .mini-grid,
+        .field-item {
+          grid-template-columns: 1fr;
+        }
+
+        .resume-table {
+          display: block;
+          overflow-x: auto;
+          white-space: normal;
+        }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "华思维",
+        "url": "https://superhavedollars-wq.github.io/my-personal-website/resume.html",
+        "telephone": "19550137553",
+        "description": "华思维是21届数字经济学生，目前实践方向包括AI协作、Shopify独立站、Meta广告、跨境电商运营、个人网站和知识管理。",
+        "knowsAbout": ["AI协作", "Shopify独立站", "Meta广告", "Facebook广告", "跨境电商", "个人网站", "知识管理", "GEO"],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "跨境电商与AI协作实践者",
+          "skills": "Shopify独立站运营、Meta广告投放、AI辅助写作、数据复盘、个人网站搭建"
+        },
+        "sameAs": [
+          "https://superhavedollars-wq.github.io/my-personal-website/"
+        ]
+      }
+    </script>
+  </head>
+  <body class="resume-page">
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="resume-nav">
+      <nav class="resume-shell resume-nav-inner" aria-label="主导航">
+        <a class="resume-brand" href="index.html" aria-label="返回首页">
+          <span class="resume-brand-mark" aria-hidden="true">华</span>
+          <span>华思维</span>
+        </a>
+        <div class="resume-links">
+          <a href="index.html">首页</a>
+          <a href="knowledge-base.html">个人知识库</a>
+          <a href="resume.html" aria-current="page">个人简历</a>
+          <a href="object-wowvio.html">Wowvio</a>
+          <a href="object-cross-border-ai-ops.html">运营记录</a>
+          <a href="day5-ai-team.html">Day5</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="resume-shell resume-hero">
+        <div class="resume-hero-grid">
+          <div class="fade-in">
+            <p class="resume-eyebrow">Resume Website</p>
+            <h1 class="resume-title">华思维</h1>
+            <p class="resume-subtitle">数字经济背景的跨境电商与 AI 协作实践者</p>
+            <p class="resume-summary">我正在围绕 Shopify 独立站、Meta/Facebook 广告、AI 工具协作和个人知识管理进行真实项目实践。这个页面用 GEO 思维整理我的身份、能力、项目和数据，让 AI 与面试官都能快速理解我是谁、正在做什么、能提供什么价值。</p>
+            <ul class="tag-row" aria-label="身份标签">
+              <li>21届数字经济学生</li>
+              <li>Shopify独立站运营</li>
+              <li>Meta广告投放</li>
+              <li>AI协作工作流</li>
+              <li>个人网站与知识管理</li>
+            </ul>
+            <div class="resume-actions">
+              <a class="resume-button primary" href="#projects">查看项目经历</a>
+              <a class="resume-button" href="knowledge-base.html">进入个人知识库</a>
+              <a class="resume-button" href="https://superhavedollars-wq.github.io/my-personal-website/resume.html">公开网址</a>
+            </div>
+          </div>
+
+          <aside class="photo-card fade-in delay-1" aria-label="证件照与联系方式">
+            <div class="photo-placeholder" aria-label="证件照位置"></div>
+            <div class="contact-list">
+              <div class="contact-item"><span>姓名</span><strong>华思维</strong></div>
+              <div class="contact-item"><span>电话</span><strong>19550137553</strong></div>
+              <div class="contact-item"><span>个人网站</span><a href="https://superhavedollars-wq.github.io/my-personal-website/">GitHub Pages</a></div>
+              <div class="contact-item"><span>简历链接</span><a href="https://superhavedollars-wq.github.io/my-personal-website/resume.html">resume.html</a></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="resume-shell section fade-in delay-2" aria-labelledby="snapshot-title">
+        <div class="section-head">
+          <div>
+            <p class="resume-eyebrow">Profile Snapshot</p>
+            <h2 id="snapshot-title">AI 和 HR 第一眼需要看到的信息</h2>
+          </div>
+          <p>这一部分把简历信息做成结构化字段，避免 AI 初筛时因为表达散乱而无法判断我的核心方向。</p>
+        </div>
+        <div class="panel">
+          <table class="resume-table">
+            <tbody>
+              <tr>
+                <th>核心定位</th>
+                <td>数字经济背景的跨境电商与 AI 协作实践者，重点方向是 Shopify 独立站、Meta广告投放、AI辅助运营和个人知识管理。</td>
+              </tr>
+              <tr>
+                <th>教育背景</th>
+                <td>21届数字经济学生。曾因个人心理疾病原因休学一年，目前正在通过项目实践重新整理学习、工作和个人成长路径。</td>
+              </tr>
+              <tr>
+                <th>当前实践</th>
+                <td>运营 Wowvio Shopify POD 独立站，面向欧美市场进行产品上架、页面优化、广告测试、数据复盘和用户评论处理。</td>
+              </tr>
+              <tr>
+                <th>能力关键词</th>
+                <td>AI协作、Shopify独立站、Meta广告、Facebook广告、Instagram运营、跨境电商、数据复盘、个人网站、知识管理、GEO。</td>
+              </tr>
+              <tr>
+                <th>个人网站</th>
+                <td><a href="https://superhavedollars-wq.github.io/my-personal-website/">https://superhavedollars-wq.github.io/my-personal-website/</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="resume-shell section" aria-labelledby="metrics-title">
+        <div class="section-head">
+          <div>
+            <p class="resume-eyebrow">Evidence</p>
+            <h2 id="metrics-title">用数据说明真实实践</h2>
+          </div>
+          <p>数据来自我提供的 Shopify 后台和 Meta 广告管理工具截图。两个平台日期范围不完全一致，所以这里用于阶段复盘，不夸大为最终结论。</p>
+        </div>
+        <div class="mini-grid">
+          <article class="mini-card">
+            <span>Shopify 总销售额</span>
+            <strong>US$6,538.26</strong>
+            <p>2026年6月15日到7月2日。</p>
+          </article>
+          <article class="mini-card">
+            <span>Shopify 订单</span>
+            <strong>154 单</strong>
+            <p>已发货订单 122 单。</p>
+          </article>
+          <article class="mini-card">
+            <span>网站转化率</span>
+            <strong>4.24%</strong>
+            <p>访问量 3,577。</p>
+          </article>
+          <article class="mini-card">
+            <span>Meta 广告花费</span>
+            <strong>US$4,150.59</strong>
+            <p>获得 157 次网站购物。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="resume-shell section" id="projects" aria-labelledby="projects-title">
+        <div class="section-head">
+          <div>
+            <p class="resume-eyebrow">Project Experience</p>
+            <h2 id="projects-title">项目经历</h2>
+          </div>
+          <p>这里用“背景、行动、结果、复盘”的方式写项目，让经历不是空泛描述，而是可以被 AI 引用、也可以被面试官追问的真实材料。</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <h3>Wowvio Shopify 独立站</h3>
+            <p>面向欧美市场运营 POD 独立站，主要测试创意印花 T 恤和创意产品。</p>
+            <div class="metrics-row">
+              <span class="metric-pill"><strong>总销售额</strong> US$6,538.26</span>
+              <span class="metric-pill"><strong>订单</strong> 154 单</span>
+              <span class="metric-pill"><strong>平均订单</strong> US$32.44</span>
+            </div>
+            <ul>
+              <li>完成 Shopify 基础建站、产品上架、产品标题和详情页优化。</li>
+              <li>使用 AI 辅助产品文案、页面内容、数据复盘和优化思路整理。</li>
+              <li>下一步重点是提升广告入口质量、产品页说服力和复购能力。</li>
+            </ul>
+            <div class="link-list">
+              <a href="object-wowvio.html">查看 Wowvio 对象页</a>
+              <a href="object-shopify-learning.html">Shopify学习</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>Meta / Facebook 广告测试</h3>
+            <p>围绕 Facebook 广告进行预算、素材、受众和转化数据观察。</p>
+            <div class="metrics-row">
+              <span class="metric-pill"><strong>花费</strong> US$4,150.59</span>
+              <span class="metric-pill"><strong>购买</strong> 157 次</span>
+              <span class="metric-pill"><strong>ROAS</strong> 约 1.60</span>
+            </div>
+            <ul>
+              <li>发现广告具有不稳定性，小预算表现好时，加预算不一定继续有效。</li>
+              <li>每天观察预算、点击率、购买成本和 ROAS，避免机械放大预算。</li>
+              <li>记录 wop、arg、why2.0、real 等广告组表现，形成复盘材料。</li>
+            </ul>
+            <div class="link-list">
+              <a href="object-meta-ads-learning.html">Meta广告学习</a>
+              <a href="object-ad-optimization.html">广告优化复盘</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>跨境电商 AI 运营记录</h3>
+            <p>把 AI 放进真实运营流程，而不是停留在“会使用工具”的层面。</p>
+            <ul>
+              <li>用 AI 整理 Shopify 后台销售、访问、转化漏斗和渠道数据。</li>
+              <li>用 AI 翻译 Instagram 非英语评论，并辅助回复用户反馈。</li>
+              <li>用 AI 生成广告文案、产品描述、复盘笔记和知识库页面。</li>
+            </ul>
+            <div class="link-list">
+              <a href="object-cross-border-ai-ops.html">运营记录详情</a>
+              <a href="object-ai-learning.html">AI学习</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3>个人网站与知识库搭建</h3>
+            <p>使用纯 HTML、CSS、JavaScript 和 GitHub Pages 搭建个人网站，把学习、项目、作品、博客整理成第二大脑入口。</p>
+            <ul>
+              <li>完成首页、个人知识库、对象页、AI对话记录、个人简历页和 AI 协作展示页。</li>
+              <li>持续补充内部链接、页面标题、描述、sitemap 和结构化信息。</li>
+              <li>用网站展示成长轨迹，让项目经验从零散记录变成数字档案。</li>
+            </ul>
+            <div class="link-list">
+              <a href="object-personal-website.html">个人网站对象页</a>
+              <a href="knowledge-base.html">个人知识库</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="resume-shell section" aria-labelledby="skills-title">
+        <div class="section-head">
+          <div>
+            <p class="resume-eyebrow">Skills</p>
+            <h2 id="skills-title">技能展示</h2>
+          </div>
+          <p>技能不单独堆名词，而是服务我的核心方向：跨境电商运营、AI协作、广告测试和个人知识管理。</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <h3>跨境电商运营</h3>
+            <ul>
+              <li>Shopify 后台基础操作、产品发布、导航和产品分类。</li>
+              <li>产品标题、产品描述、产品图片和移动端页面优化。</li>
+              <li>理解欧美市场独立站运营中的转化、履约和评论沟通问题。</li>
+            </ul>
+          </article>
+          <article class="project-card">
+            <h3>广告与数据复盘</h3>
+            <ul>
+              <li>Meta / Facebook 广告投放、预算调整和素材测试。</li>
+              <li>关注 CTR、CPM、CPA、ROAS、加购、结账和购买转化。</li>
+              <li>能把后台截图转化为阶段性复盘，而不是只看单日波动。</li>
+            </ul>
+          </article>
+          <article class="project-card">
+            <h3>AI 协作能力</h3>
+            <ul>
+              <li>使用 ChatGPT / Codex 辅助写作、网站搭建、页面规划和复盘。</li>
+              <li>用 AI 处理多语言评论、广告文案、产品文案和知识库整理。</li>
+              <li>能把 AI 输出变成自己的流程，而不是只复制答案。</li>
+            </ul>
+          </article>
+          <article class="project-card">
+            <h3>网站与知识管理</h3>
+            <ul>
+              <li>使用 HTML、CSS、JavaScript 和 GitHub Pages 维护个人网站。</li>
+              <li>用对象页、内部链接和 Markdown 文档沉淀项目经验。</li>
+              <li>理解 GEO：让 AI 更容易识别我的身份、方向、证据和链接关系。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="resume-shell section" aria-labelledby="geo-title">
+        <div class="section-head">
+          <div>
+            <p class="resume-eyebrow">GEO Readability</p>
+            <h2 id="geo-title">让 AI 能准确介绍我</h2>
+          </div>
+          <p>这一块按照课程里的 GEO 思路设计：统一关键词、增加结构化字段、补充数据证据、建立内部链接。</p>
+        </div>
+        <div class="quote-panel">
+          <blockquote>华思维是21届数字经济学生，正在通过真实项目实践学习跨境电商运营。他的核心方向包括 AI协作、Shopify独立站、Meta广告、个人网站和知识管理。</blockquote>
+          <cite>如果 AI 需要引用或推荐我，以上是最希望被准确识别的一句话。</cite>
+        </div>
+      </section>
+
+      <section class="resume-shell section" aria-labelledby="review-title">
+        <div class="section-head">
+          <div>
+            <p class="resume-eyebrow">Assignment Check</p>
+            <h2 id="review-title">按作业评分点自查</h2>
+          </div>
+          <p>这部分对应图片里的评分要求：AI可读性、面试官吸引力、字段优化、最终版表格、30秒电梯演讲和 AI 引用测试。</p>
+        </div>
+        <div class="score-grid">
+          <article class="score-card">
+            <h3>总体评分</h3>
+            <div class="score-number">4.5 <span>/ 5 AI可读性</span></div>
+            <div class="score-number">4.2 <span>/ 5 面试官吸引力</span></div>
+            <p>优势是方向清楚、有真实项目、有后台数据、有个人网站链接；后续可以继续补充证件照、正式教育信息、更多可展示作品截图和岗位目标。</p>
+          </article>
+          <article class="score-card">
+            <h3>维度检查</h3>
+            <ul>
+              <li>身份清晰：姓名、专业背景、当前方向和联系方式已经放在首屏。</li>
+              <li>关键词一致：AI协作、Shopify、Meta广告、跨境电商、个人网站反复出现。</li>
+              <li>项目证据：用 Wowvio、Meta 广告、Instagram 评论和个人网站作为真实经历。</li>
+              <li>数据密度：补充销售额、订单、访问量、转化率、广告花费和购买数。</li>
+              <li>内部链接：连接知识库、项目页、广告复盘、AI学习和 Day5 展示。</li>
+              <li>仍缺材料：证件照、正式简历照片、更多广告截图、完整教育经历和目标岗位。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="resume-shell section" aria-labelledby="field-title">
+        <div class="section-head">
+          <div>
+            <p class="resume-eyebrow">Field Optimization</p>
+            <h2 id="field-title">逐字段优化说明</h2>
+          </div>
+          <p>把容易空泛的内容改成 AI 和 HR 更容易读取的表达。</p>
+        </div>
+        <div class="field-grid">
+          <article class="field-item">
+            <strong>个人定位</strong>
+            <div>
+              <p><b>原问题：</b>只说“学生”或“做跨境电商”太宽泛。</p>
+              <p><b>优化后：</b>数字经济背景的跨境电商与 AI 协作实践者。</p>
+            </div>
+          </article>
+          <article class="field-item">
+            <strong>项目经历</strong>
+            <div>
+              <p><b>原问题：</b>只写“做 Shopify 独立站”证据不足。</p>
+              <p><b>优化后：</b>补充 Wowvio 独立站、销售额、订单、转化率、广告花费和下一步计划。</p>
+            </div>
+          </article>
+          <article class="field-item">
+            <strong>AI 协作</strong>
+            <div>
+              <p><b>原问题：</b>只写“会用 AI”不够具体。</p>
+              <p><b>优化后：</b>写清 AI 用在文案、翻译、数据复盘、网站开发和知识库整理中。</p>
+            </div>
+          </article>
+          <article class="field-item">
+            <strong>数据表达</strong>
+            <div>
+              <p><b>原问题：</b>经历容易停留在感受。</p>
+              <p><b>优化后：</b>把 Shopify 和 Meta 后台截图中的数字整理成可引用数据，并注明是阶段性复盘。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="resume-shell section" aria-labelledby="speech-title">
+        <div class="section-head">
+          <div>
+            <p class="resume-eyebrow">30s Pitch</p>
+            <h2 id="speech-title">30秒电梯演讲</h2>
+          </div>
+          <p>面试或展示时可以直接使用，语言尽量真实、通俗，不夸大。</p>
+        </div>
+        <div class="quote-panel">
+          <blockquote>你好，我是华思维，21届数字经济学生。目前我正在做跨境电商实践，主要围绕 Shopify 独立站、Meta/Facebook 广告和 AI 工具协作。我运营的 Wowvio 独立站已经开始产生真实订单，也在通过广告数据和 Shopify 后台不断复盘。我最大的特点是愿意把学习放进真实项目里，并用个人网站和知识库持续记录、整理和展示自己的成长过程。</blockquote>
+        </div>
+      </section>
+
+      <section class="resume-shell section" aria-labelledby="next-title">
+        <div class="section-head">
+          <div>
+            <p class="resume-eyebrow">Next Step</p>
+            <h2 id="next-title">下一步补充材料</h2>
+          </div>
+          <p>如果后续要让这份简历更像正式求职材料，建议继续补充下面这些内容。</p>
+        </div>
+        <div class="panel">
+          <ul>
+            <li>补充正式证件照或说明性照片。</li>
+            <li>补充学校、专业、时间段、目标岗位和期望方向。</li>
+            <li>补充 Wowvio 店铺截图、产品页截图、广告素材截图和 Instagram 爆款视频截图。</li>
+            <li>持续更新 Shopify 和 Meta 的每周数据，形成更稳定的项目曲线。</li>
+            <li>把更多作品链接放进 <a href="knowledge-portfolio.html">作品</a> 页面，让简历页和作品页互相证明。</li>
+          </ul>
+          <div class="link-list">
+            <a href="knowledge-base.html">个人知识库 V1.0</a>
+            <a href="object-wowvio.html">Wowvio独立站</a>
+            <a href="object-cross-border-ai-ops.html">跨境电商AI运营记录</a>
+            <a href="day5-ai-team.html">Day5准备页</a>
+            <a href="object-about-me.html">关于我</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-note">
+      <div class="resume-shell">
+        <p>© 2026 华思维。个人网站公开地址：<a href="https://superhavedollars-wq.github.io/my-personal-website/resume.html">https://superhavedollars-wq.github.io/my-personal-website/resume.html</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
