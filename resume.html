@@ -10,7 +10,7 @@
     <link rel="canonical" href="https://superhavedollars-wq.github.io/my-personal-website/resume.html">
     <meta property="og:url" content="https://superhavedollars-wq.github.io/my-personal-website/resume.html">
     <meta property="og:title" content="华思维个人简历网站">
-    <meta property="og:description" content="一份面向电商运营方向的蓝白风个人简历网站，展示跨境电商、Shopify、Meta广告和AI协作实践。">
+    <meta property="og:description" content="一份面向电商运营方向的深色作品集风个人简历网站，展示跨境电商、Shopify、Meta广告和AI协作实践。">
     <meta property="og:type" content="profile">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
@@ -585,6 +585,430 @@
           white-space: normal;
         }
       }
+
+      body.resume-page {
+        color-scheme: dark;
+        color: #d8dfef;
+        background:
+          radial-gradient(circle at 76% 18%, rgba(183, 77, 255, 0.24), transparent 26rem),
+          radial-gradient(circle at 92% 32%, rgba(255, 92, 172, 0.18), transparent 20rem),
+          radial-gradient(circle at 14% 12%, rgba(91, 129, 255, 0.18), transparent 24rem),
+          linear-gradient(135deg, #080b13 0%, #141823 48%, #0b111d 100%);
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+
+      body.resume-page::before,
+      body.resume-page::after {
+        display: block;
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      body.resume-page::before {
+        z-index: 0;
+        background:
+          radial-gradient(circle, rgba(255, 255, 255, 0.24) 1px, transparent 1.8px),
+          linear-gradient(115deg, transparent 0 42%, rgba(255, 255, 255, 0.04) 46%, transparent 52%);
+        background-size: 46px 46px, 100% 100%;
+        opacity: 0.18;
+      }
+
+      body.resume-page::after {
+        z-index: 0;
+        background:
+          radial-gradient(circle at 58% 40%, rgba(255, 255, 255, 0.08), transparent 18rem),
+          linear-gradient(180deg, transparent 0%, rgba(9, 11, 18, 0.34) 62%, rgba(9, 11, 18, 0.72) 100%);
+      }
+
+      .resume-nav,
+      .resume-hero,
+      .section,
+      .footer-note {
+        position: relative;
+        z-index: 1;
+      }
+
+      .resume-nav {
+        background: rgba(8, 11, 19, 0.68);
+        border-bottom-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 16px 46px rgba(0, 0, 0, 0.22);
+      }
+
+      .resume-brand {
+        color: #f8fbff;
+      }
+
+      .resume-brand-mark {
+        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 54%, #fb7b54 100%);
+        box-shadow: 0 16px 34px rgba(236, 72, 153, 0.28);
+      }
+
+      .resume-links a {
+        color: #a8b2c8;
+      }
+
+      .resume-links a:hover,
+      .resume-links a[aria-current="page"] {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 -2px 0 rgba(255, 126, 194, 0.66);
+      }
+
+      .resume-shell {
+        width: min(1180px, calc(100% - 48px));
+      }
+
+      .resume-hero {
+        min-height: calc(100vh - 73px);
+        display: flex;
+        align-items: center;
+        padding: 72px 0 64px;
+      }
+
+      .resume-hero-grid {
+        width: 100%;
+        grid-template-columns: minmax(0, 0.96fr) minmax(330px, 0.78fr);
+        gap: clamp(36px, 7vw, 84px);
+        align-items: center;
+      }
+
+      .resume-eyebrow {
+        color: #f4a5d4;
+        letter-spacing: 0.18em;
+      }
+
+      .resume-title {
+        margin-bottom: 18px;
+        color: transparent;
+        background: linear-gradient(90deg, #ffffff 0%, #b377ff 44%, #ff6fb6 72%, #ff8a5c 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        font-size: clamp(54px, 8vw, 94px);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        text-shadow: 0 22px 58px rgba(236, 72, 153, 0.2);
+      }
+
+      .resume-subtitle {
+        color: #f5f7fb;
+        max-width: none;
+        font-size: clamp(20px, 2vw, 26px);
+        white-space: nowrap;
+        word-break: keep-all;
+      }
+
+      .nowrap {
+        white-space: nowrap;
+      }
+
+      .resume-summary {
+        max-width: 690px;
+        color: #b8c2d7;
+        font-size: 17px;
+      }
+
+      .tag-row li,
+      .metric-pill {
+        color: #d9e2f6;
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+      }
+
+      .resume-button {
+        color: #f7f8ff;
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.24);
+      }
+
+      .resume-button.primary {
+        color: #fff;
+        background: linear-gradient(135deg, #b548ff 0%, #ff5ca8 58%, #ff8055 100%);
+        box-shadow: 0 20px 44px rgba(236, 72, 153, 0.32);
+      }
+
+      .resume-button:hover {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.34);
+        box-shadow: 0 20px 52px rgba(202, 92, 255, 0.2);
+      }
+
+      .photo-card {
+        position: relative;
+        min-height: 440px;
+        overflow: hidden;
+        padding: 26px;
+        background:
+          linear-gradient(145deg, rgba(35, 39, 58, 0.78), rgba(20, 22, 34, 0.9)),
+          radial-gradient(circle at 72% 18%, rgba(236, 72, 153, 0.26), transparent 18rem);
+        border-color: rgba(255, 255, 255, 0.12);
+        border-radius: 32px;
+        box-shadow: 0 36px 90px rgba(0, 0, 0, 0.44);
+      }
+
+      .photo-card::before {
+        content: "";
+        position: absolute;
+        inset: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 26px;
+        pointer-events: none;
+      }
+
+      .resume-visual {
+        position: relative;
+        min-height: 254px;
+        perspective: 900px;
+      }
+
+      .visual-stage {
+        position: absolute;
+        right: 4%;
+        bottom: 18px;
+        width: 76%;
+        height: 56px;
+        background: linear-gradient(90deg, rgba(73, 59, 120, 0.54), rgba(238, 96, 175, 0.18));
+        border-radius: 28px;
+        filter: blur(2px);
+        transform: skewX(-12deg);
+      }
+
+      .visual-panel {
+        position: absolute;
+        right: 4%;
+        top: 32px;
+        width: 72%;
+        min-height: 128px;
+        padding: 18px;
+        background: linear-gradient(135deg, rgba(102, 70, 220, 0.92), rgba(229, 70, 171, 0.88));
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 18px;
+        box-shadow: 0 28px 58px rgba(104, 64, 210, 0.34);
+        transform: rotateY(-12deg) rotateX(7deg);
+      }
+
+      .visual-panel::after {
+        content: "";
+        position: absolute;
+        inset: 16px 18px auto auto;
+        width: 78px;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.48);
+        border-radius: 999px;
+        box-shadow: 0 28px 0 rgba(255, 255, 255, 0.25), 0 56px 0 rgba(255, 255, 255, 0.16);
+      }
+
+      .visual-code-card {
+        position: absolute;
+        left: 0;
+        top: 72px;
+        width: 50%;
+        padding: 18px 16px;
+        background: rgba(17, 19, 31, 0.86);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 14px;
+        box-shadow: 0 22px 44px rgba(0, 0, 0, 0.34);
+        transform: rotateY(14deg) rotateX(4deg);
+      }
+
+      .visual-line {
+        display: block;
+        height: 7px;
+        margin: 10px 0;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      }
+
+      .visual-line.short {
+        width: 58%;
+      }
+
+      .visual-line.mid {
+        width: 78%;
+        background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      }
+
+      .visual-cube,
+      .visual-orb {
+        position: absolute;
+        bottom: 22px;
+        border-radius: 18px;
+        box-shadow: 0 24px 46px rgba(0, 0, 0, 0.3);
+      }
+
+      .visual-cube {
+        left: 24%;
+        width: 78px;
+        height: 68px;
+        display: grid;
+        place-items: center;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 26px;
+        font-weight: 800;
+        background: linear-gradient(145deg, #4f46e5, #d946ef);
+        transform: rotate(-8deg);
+      }
+
+      .visual-orb {
+        right: 17%;
+        width: 86px;
+        height: 86px;
+        background: radial-gradient(circle at 32% 26%, #ffd1ee 0%, #ec4899 42%, #7c3aed 100%);
+        border-radius: 50%;
+      }
+
+      .contact-list {
+        position: relative;
+        z-index: 1;
+        margin-top: 18px;
+      }
+
+      .contact-item {
+        border-top-color: rgba(255, 255, 255, 0.1);
+        color: #aab5ca;
+      }
+
+      .contact-item strong,
+      .contact-item a {
+        color: #f8fbff;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .section-head h2,
+      .project-card h3,
+      .mini-card strong,
+      .resume-table th,
+      .field-item strong,
+      .metric-pill strong {
+        color: #f8fbff;
+      }
+
+      .section-head p,
+      .footer-note,
+      .quote-panel cite {
+        color: #a9b5ca;
+      }
+
+      .panel,
+      .mini-card,
+      .project-card,
+      .score-card,
+      .quote-panel {
+        background: rgba(25, 28, 42, 0.78);
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 26px 68px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(18px);
+      }
+
+      .mini-card span {
+        color: #f4a5d4;
+      }
+
+      .mini-card p,
+      .project-card p,
+      .project-card ul,
+      .score-card ul,
+      .project-card li,
+      .score-card li,
+      .resume-table,
+      .field-item p {
+        color: #bec7da;
+      }
+
+      .resume-table th,
+      .field-item {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .resume-table th,
+      .resume-table td {
+        border-bottom-color: rgba(255, 255, 255, 0.09);
+      }
+
+      .resume-table a,
+      .link-list a {
+        color: #ff9bd4;
+      }
+
+      .link-list a {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .project-card:hover {
+        box-shadow: 0 28px 74px rgba(159, 92, 255, 0.2);
+      }
+
+      .quote-panel {
+        background:
+          linear-gradient(145deg, rgba(30, 34, 51, 0.86), rgba(18, 20, 31, 0.82)),
+          radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.12), transparent 18rem);
+      }
+
+      .quote-panel blockquote,
+      .resume-literary blockquote {
+        color: #eef2fb;
+      }
+
+      .score-number {
+        color: #ff71ba;
+      }
+
+      .score-number span {
+        color: #a9b5ca;
+      }
+
+      .footer-note a {
+        color: #ff9bd4;
+      }
+
+      @media (max-width: 900px) {
+        .resume-hero {
+          min-height: auto;
+        }
+
+        .resume-visual {
+          min-height: 230px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .resume-shell {
+          width: min(100% - 28px, 1180px);
+        }
+
+        .resume-hero {
+          padding-top: 42px;
+        }
+
+        .resume-title {
+          font-size: clamp(44px, 16vw, 64px);
+        }
+
+        .resume-subtitle {
+          white-space: normal;
+        }
+
+        .resume-visual {
+          min-height: 210px;
+        }
+
+        .visual-panel {
+          width: 70%;
+          min-height: 110px;
+        }
+
+        .visual-code-card {
+          width: 52%;
+        }
+      }
     </style>
     <script type="application/ld+json">
       {
@@ -635,7 +1059,7 @@
           <div class="fade-in">
             <p class="resume-eyebrow">Resume Website</p>
             <h1 class="resume-title">华思维</h1>
-            <p class="resume-subtitle">杭州师范大学数字经济专业｜目标岗位：电商运营</p>
+            <p class="resume-subtitle">杭州师范大学数字经济专业｜<span class="nowrap">目标岗位：电商运营</span></p>
             <p class="resume-summary">我正在围绕 Shopify 独立站、Meta/Facebook 广告、AI 工具协作和个人知识管理进行真实项目实践。我的求职目标是电商运营，希望把数据复盘、内容优化、广告测试和 AI 协作能力放进真实业务场景里。</p>
             <ul class="tag-row" aria-label="身份标签">
               <li>杭州师范大学</li>
@@ -654,8 +1078,18 @@
             </div>
           </div>
 
-          <aside class="photo-card fade-in delay-1" aria-label="证件照与联系方式">
-            <div class="photo-placeholder" aria-label="证件照位置"></div>
+          <aside class="photo-card fade-in delay-1" aria-label="简历视觉与联系方式">
+            <div class="resume-visual" aria-hidden="true">
+              <div class="visual-panel"></div>
+              <div class="visual-code-card">
+                <span class="visual-line short"></span>
+                <span class="visual-line mid"></span>
+                <span class="visual-line"></span>
+              </div>
+              <div class="visual-cube">&lt;/&gt;</div>
+              <div class="visual-orb"></div>
+              <div class="visual-stage"></div>
+            </div>
             <div class="contact-list">
               <div class="contact-item"><span>姓名</span><strong>华思维</strong></div>
               <div class="contact-item"><span>年龄</span><strong>23</strong></div>
